@@ -1,5 +1,9 @@
 import requests
+import datetime
 
+hour = datetime.datetime.now().hour
+if hour < 8 or hour > 21:
+    exit(0)
 
 links = ["https://krishnakaranam.herokuapp.com/"]
 
