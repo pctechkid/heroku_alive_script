@@ -1,4 +1,5 @@
 import requests
+from pytz import timezone
 import datetime
 import logging
 
@@ -7,7 +8,9 @@ logging.basicConfig(format=FORMAT, level=logging.INFO)
 
 logger = logging.getLogger()
 
-hour = datetime.datetime.now().hour
+tz = timezone('EST')
+
+hour = datetime.datetime.now(tz).hour
 if hour < 8 or hour > 21:
     logger.info("exiting cause not in daytime")
     exit(0)
@@ -22,7 +25,7 @@ for each in links:
         if page.status_code != 200:
             page = requests.get(each)
             print("retry:", page.status_code)
-        logger.info("retry: %s", str(page.status_code))
+            logger.info("retry: %s", str(page.status_code))
     except Exception as e:
         print(e)
         print("tried link: ", each)
