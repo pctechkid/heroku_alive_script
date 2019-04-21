@@ -15,7 +15,9 @@ if hour < 9 or hour > 21:
     logger.info("exiting cause not in daytime")
     exit(0)
 
-links = ["https://krishnakaranam.herokuapp.com/"]
+links = ["https://krishnakaranam.herokuapp.com/",
+         "https://react-googlemaps.herokuapp.com/",
+         "https://persistent-hangman-ui.herokuapp.com/"]
 
 for each in links:
     try:
